@@ -1,0 +1,428 @@
+Tools usage:
+--------------------
+1) ASNLOOKUP
+>> python3 asnlookup.py -o SONY.COM
+ex: python3 asnlookup.py -o <Organization>
+E.g: python3 asnlookup.py -o "Capital One"
+
+2) httpx
+>> cat hosts.txt | httpx 
+>> httpx -l hosts.txt -silent
+>> echo 173.0.84.0/24 | httpx -silent
+>> subfinder -d hackerone.com -silent | httpx -title -content-length -status-code -silent
+>> cat nerdwallet.com | ~/tools/httprobe/httprobe | sort -u >> domains.txt 
+
+3) lazyrecon
+>> ./lazyrecon.sh -d domain.com
+>> To exclude particular subdomains:
+./lazyrecon.sh -d domain.com -e excluded.domain.com,other.domain.com
+
+
+4) Seclists for fuzzing 
+
+5) teh_s3_bucketeers
+>> https://www.youtube.com/watch?v=FOK5BPy30HQ
+>> ./bucketeer.sh <target> <target> (dual target )
+
+6) crtndstry
+>> ./crtndstry example.com
+https://www.youtube.com/watch?v=o37L5n6w9BQ&feature=youtu.be
+
+7) JSParser
+>>  python setup.py install
+>> python handler.py
+
+8) lazys3
+>> ruby lazys3.rb <COMPANY> 
+
+9) sqlmap-dev
+>> python sqlmap.py -h
+>> python sqlmap.py -h
+>> python sqlmap.py -u “http://example.com/sqlmap/mysql/get_int.php?id=1” --batch --banner
+>> python sqlmap.py -u “http://example.com/sqlmap/mysql/get_int.php?id=1” --batch --tables -D databasename
+>> python sqlmap.py -u “http://example.com/sqlmap/mysql/get_int.php?id=1” --batch --dump -T users -D databasename
+>> python sqlmap.py -u “http://example.com/sqlmap/mysql/get_int.php?id=1” --batch --os-shell
+os-shell> pwd
+os-shell>whoami
+os-shell>ls/
+os-shell>cat /etc/passwd
+
+10) Virtual-host-discovery
+>> ruby scan.rb --ip=54.144.253.202 --host=sony.com.tld
+>>  
+
+11) dirsearch
+>> Option to whitelist response codes, support ranges (-i 200,300-399)
+>> Option to blacklist response codes, support ranges (-x 404,500-599)
+>> -e asp,aspx
+>> Passing extensions "php" and "html" with the -f/--force-extensions flag (-f -e php,html) will generate the following dictionary:
+>> Usage: dirsearch.py [-u|--url] target [-e|--extensions] extensions [options]
+>> 
+Simple usage
+python3 dirsearch.py -u https://target
+python3 dirsearch.py -e php,html,js -u https://target
+python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
+
+>> 
+Recursive scan
+By using the -r | --recursive argument, dirsearch will automatically brute-force the after of directories that it found.
+python3 dirsearch.py -e php,html,js -u https://target -r
+You can set the max recursion depth with -R or --recursion-depth
+python3 dirsearch.py -e php,html,js -u https://target -r -R 3
+>>python3 dirsearch.py -e php,htm,js,bak,zip,tgz,txt -u https://target -t 30
+
+
+
+Prefixes / Suffixes
+• --prefixes: Adding custom prefixes to all entries
+
+python3 dirsearch.py -e php -u https://target --prefixes .,admin,_,~
+
+
+Exclude extensions
+Use -X | --exclude-extensions with your exclude-extension list to remove all entries in the wordlist that have the given extensions
+python3 dirsearch.py -e asp,aspx,htm,js -u https://target -X php,jsp,jspx
+
+
+Wordlist formats
+Supported wordlist formats: uppercase, lowercase, capitalization
+python3 dirsearch.py -e html -u https://target --lowercase
+admin
+index.html
+test
+python3 dirsearch.py -e html -u https://target --uppercase
+ADMIN
+INDEX.HTML
+TEST
+python3 dirsearch.py -e html -u https://target --capital
+Admin
+Index.html
+Test
+
+
+
+Filters
+Use -i | --include-status and -x | --exclude-status to select allowed and not allowed response status codes
+python3 dirsearch.py -e php,html,js -u https://target -i 200,204,400,403 -x 500,502,429
+--exclude-sizes, --exclude-texts and --exclude-regexps are also supported for a more advanced filter
+python3 dirsearch.py -e php,html,js -u https://target --exclude-sizes 1B,243KB
+python3 dirsearch.py -e php,html,js -u https://target --exclude-texts "403 Forbidden"
+python3 dirsearch.py -e php,html,js -u https://target --exclude-regexps "^Error$"
+
+12) knock
+Subdomain scan with internal wordlist
+$ knockpy domain.com
+Subdomain scan with external wordlist
+$ knockpy domain.com -w wordlist.txt
+Resolve domain name and get response headers
+$ knockpy -r domain.com [or IP]
+Save scan output in CSV
+$ knockpy -c domain.com
+Export full report in JSON
+$ knockpy -j domain.com
+
+13) massdns
+>> 
+Example
+Resolve all AAAA records from domains within domains.txt using the resolvers within resolvers.txt in lists and store the results within results.txt:
+$ ./bin/massdns -r lists/resolvers.txt -t AAAA domains.txt > results.txt
+This is equivalent to:
+$ ./bin/massdns -r lists/resolvers.txt -t AAAA -w results.txt domains.txt
+
+PTR records
+MassDNS includes a Python script allowing you to resolve all IPv4 PTR  records by printing their respective queries to the standard output.
+$ ./scripts/ptr.py | ./bin/massdns -r lists/resolvers.txt -t PTR -w ptr.txt
+
+Similar to subbrute, MassDNS allows you to brute force subdomains using the included subbrute.py script:
+$ ./scripts/subbrute.py lists/names.txt example.com | ./bin/massdns -r lists/resolvers.txt -t A -o S -w results.txt
+
+$ ./scripts/ct.py example.com | ./bin/massdns -r lists/resolvers.txt -t A -o S -w results.txt
+
+14) sublister
+
+Examples
+• To list all the basic options and switches use -h switch:
+
+python sublist3r.py -h
+◇ To enumerate subdomains of specific domain:
+
+python sublist3r.py -d example.com
+◇ To enumerate subdomains of specific domain and show only subdomains which have open ports 80 and 443 :
+
+python sublist3r.py -d example.com -p 80,443
+◇ To enumerate subdomains of specific domain and show the results in realtime:
+
+python sublist3r.py -v -d example.com
+◇ To enumerate subdomains and enable the bruteforce module:
+
+python sublist3r.py -b -d example.com
+◇ To enumerate subdomains and use specific engines such Google, Yahoo and Virustotal engines
+
+python sublist3r.py -e google,yahoo,virustotal -d example.com
+
+
+
+
+
+
+Scan sub-directories
+From an URL, you can scan sub-dirsearctories with --subdirs.
+python3 dirsearch.py -e php,html,js -u https://target --subdirs admin/,folder/,/
+A reverse version of this feature is --exclude-subdirs, which to prevent dirsearch from brute-forcing directories that should not be brute-forced when doing a recursive scan.
+python3 dirsearch.py -e php,html,js -u https://target --recursive -R 2 --exclude-subdirs "server-status/,%3f/"
+
+
+
+Proxies
+Dirsearch supports SOCKS and HTTP proxy, with two options: a proxy server or a list of proxy servers.
+python3 dirsearch.py -e php,html,js -u https://target --proxy 127.0.0.1:8080
+python3 dirsearch.py -e php,html,js -u https://target --proxy socks5://10.10.0.1:8080
+python3 dirsearch.py -e php,html,js -u https://target --proxylist proxyservers.txt
+
+
+
+Reports
+Dirsearch allows the user to save the output into a file. It supports  several output formats like text or json, and we are keep updating for  new formats
+python3 dirsearch.py -e php -l URLs.txt --plain-text-report report.txt
+python3 dirsearch.py -e php -u https://target --json-report target.json
+python3 dirsearch.py -e php -u https://target --simple-report target.txt
+
+
+
+Some others commands
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt -H "X-Forwarded-Host: 127.0.0.1" -f
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt -t 100 -m POST --data "username=admin"
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt --random-agent --cookie "PHPSESSID=el4ukv0kqbvoirg7nkp4dncpk3"
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt --json-report=target.json
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt --minimal 1
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt --header-list rate-limit-bypasses.txt
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt -q --stop-on-error
+python3 dirsearch.py -e php,txt,zip -u https://target -w db/dicc.txt --full-url
+python3 dirsearch.py -u https://target -w db/dicc.txt --no-extension
+There are more features and you will need to discover it by your self
+
+
+
+Tips
+• To run dirsearch with a rate of requests per second, try -t <rate> -s 1
+• Want to findout config files or backups? Try out --suffixes ~ and --prefixes .
+• For some endpoints that you do not want to force extensions, add %NOFORCE% at the end of them
+• Want to find only folders/directories? Combine --no-extension and --suffixes /!
+• The combination of --cidr, -F and -q will reduce most of the noise + false negatives when brute-forcing with a CIDR
+
+
+15) aquatone
+>> python -m SimpleHTTPServer 8000
+>> kill -9 7247
+>> cat domians.txt | ~/tools/aquatone/aquatone
+>> cat domains.txt | aquatone -out /root/Desktop/aquatone
+>> cat domains.txt | aquatone -ports large -out /root/Desktop/aquatone
+>> cat domains.txt | aquatone -ports small -out /root/Desktop/aquatone
+>> cat domains.txt | aquatone -ports medium -out /root/Desktop/aquatone
+>> cat domains.txt | aquatone -ports xlarge -out /root/Desktop/aquatone
+
+usage:
+>> aquatone-discover
+>> aquatone-scan
+>> aquatone-takeover
+
+>> aquatone-
+>> aquatone-discover -d example.com
+>> aquatone-discover -d example.com --disable-collectors dictionary
+>> aquatone-scan -d example.com
+>> aquatone-takeover -d example.com
+
+16) EvilURL
+>> python3 evilurl.py(Interface)
+>> python3 evilurl-cli.py(command line)
+
+17) fuff
+>>  ffuf -w /root/tools/SecLists/Discovery/Web-Content/raft-large-directories.txt -u "http://lyncws10.att.com/FUZZ"
+
+tool name:-- ffuf (https://www.youtube.com/watch?v=FYMQjYmhNSg)
+
+>> ffuf github
+>> cd ffuf
+>> go build
+>> change name 
+>> mv ffuf fuzd
+>> ./fuzz
+how to run the fuzz tool
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ"
+
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ" -fc 401 (fc means filter code 401 skipped)
+
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ" -mc 301 (mc means match code)
+
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ" -recursion
+
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ" -recursion -recursion depth 2
+
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ.EXT" -w /usr/share/seclists/Discovery/Web-Content/ext.txt:EXT
+
+>> ./fuzz -w /root/tools/seclists/Discovery/Web-Content/raft-large-directories.txt -u "http://example.com/FUZZ" -o metasploit -of csv
+
+Fuzzing
+-----------
+
+>> github.com/danielmiessler/SecLists/tree/master/Fuzzing
+>> github.com/fuzzdb-project/fuzzdb
+>> github.com/swisskyrepo/PayloadsAllTheThings
+>> github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
+
+Fuzzing for sensitive files
+>> github.com/maurosoria/dirsearch/blob/master/db/dicc.txt
+ 
+ ++ dirsearch/db/dicc.txt
+ 
+ -> wfuzz
+ >> pip install wfuzz
+ >> wfuzz -w wordlist.txt http://example.com/FUZZ
+ >> wfuzz -c -w /root/tools/SecLists/Fuzzing/LFI/dicc.txt http://testphp.vulnweb.com/FUZZ
+>> wfuzz -c --hc 404,400,403,500 -w /root/tools/SecLists/Fuzzing/LFI/dicc.txt http://testphp.vulnweb.com/FUZZ
+
+18) JSScaner 
+>> bash install.sh
+>> ./script.sh alive.txt
+>> ./script.sh hosts.txt
+>> 
+
+19) shodomain
+api-key = 8EuT4LrIsqhH9kdvFr8dnt9GzR5l4tBP
+>> python shodomain.py API-KEY example.com
+
+20) nuclei-tempaltes & nuclei
+https://www.youtube.com/watch?v=KNM9oNPYikY
+
+usage:
+>> cat domains.txt | nuclei -t /root/nuclei-templates/technologies/reverse-proxy-detect.yaml -o nuclei/technologies.txt -v
+>> cat domains.txt | nuclei -t /root/nuclei-templates/vulnerabilities/ -o nuclei/test.txt -v
+>> cat test-case.txt | nuclei -t /root/nuclei-templates/vulnerabiblities/microstrategy-ssrf.yaml -o nuclei/microstrategy-ssrf.yaml.txt
+>> cat domains.txt | nuclei -t /root/nuclei-templates/vulnerabilities/ -o nuclei/results.txt
+
+cat ~/Recondata/nerwallet.com/alive.txt | nuclei -t ~/nuclei-templates/panels/ -o nuclei/panels.txt -v
+
+
+21) findomain-linux
+>> vim config.example.toml (to configure the api keys)
+>> ./findomain-linux
+>> ./findomain-linux -t hackerone.com
+
+22) findomain
+>> findomain -t example.com 
+>> findomain -t example.com -a
+>> findomain -t example.com -o csv
+>> findomain -t example.com -a -o csv
+>> findomain -t example.com -i
+>> findomain -t example.com -i -a
+>> findomain -t example.com -p http://127.0.0.1:8080 
+>> ./target/release/findomain  -t hackerone.com
+https://medium.com/@edu4rdshl/subdomains-enumeration-what-is-how-to-do-it-monitoring-automation-using-webhooks-and-5e0a0c6d9127
+
+23) webscreenshot
+>> python3 webscreenshot.py -h
+>> python webscreenshot.py -i list.txt
+>> python webscreenshot.py -v google.fr
+>> python webscreenshot.py -i list.txt -v
+>>  ls -l screenshots/
+
+24) unfurl 
+>>  cat urls.txt
+>>  cat urls.txt | unfurl domains
+>> cat urls.txt | unfurl --unique domains
+>> cat urls.txt | unfurl paths 
+>> cat urls.txt | unfurl keys
+>> cat urls.txt | unfurl values
+>> cat urls.txt | unfurl keypairs
+>> cat urls.txt | unfurl format %d%p
+>> cat urls.txt | unfurl -u format "%d (%s)"
+>> echo http://example.com | unfurl format "%P"
+>> echo http://example.com:8080 | unfurl format "%P"
+8080
+>> unfurl -h
+
+25) waybackurls
+>> cat domains.txt | waybackurls > urls
+>> cat test.txt | ~/tools/waybackurls/waybackurls > ~/Desktop/results.txt 
+
+26) httprobe
+>> cat domains.txt | httprobe -p http:81 -p https:8443
+>> cat domains.txt | httprobe -c 50
+>> cat domains.txt | httprobe -t 20000
+>> cat domains.txt | httprobe -s -p https:8443
+>> cat domains.txt | httprobe --prefer-https
+>> cat ~/Recondata/18f/gsa.gov.txt | ./httprobe -p http:81 -p https:8443
+
+27) meg
+>>  
+
+28) Arjun
+>> python3 arjun.py -u https://api.example.com/endpoint --get
+>> python3 arjun.py --urls targets.txt --get
+>> python3 arjun.py -u https://api.example.com/endpoint --get -t 22
+>> python3 arjun.py  -u https://api.example.com/endpoint --get -d 2
+>> python3 arjun.py  -u https://api.example.com/endpoint --get --stable
+>> python3 arjun.py  -u https://api.example.com/endpoint --get --include 'api_key=xxxxx'
+>> python3 arjun.py -u https://api.example.com/endpoint --get -o result.json
+>> python3 arjun.py -u https://api.example.com/endpoint --post --headers "Accept-Language: en-US\nCookie: null"
+>> ./arjun.py -u https://bugcrowd.com/programs
+
+29) Gau 
+>> ./gau -h
+>> $ printf example.com | gau
+$ cat domains.txt | gau
+$ gau example.com
+$ gau -o example-urls.txt example.com
+>> ./gau apple.com -subs -o ~/Desktop/applesubs.txt
+
+30) subfinder
+>> subfinder -d example.com
+>> subfinder -d freelancer.com -o output.txt
+>> cat domains.txt
+▶ subfinder -dL domains.txt -oD ~/path/to/output
+▶ ls ~/path/to/output
+▶ subfinder -d hackerone.com -o output.json -oJ -nW
+▶ cat output.json
+▶ echo hackerone.com | subfinder
+▶ cat targets.txt | subfinder
+▶ echo hackerone.com | subfinder -silent | httpx -silent
+
+31) Eyewitness
+>> ./EyeWitness -f urls.txt --web
+
+>> ./EyeWitness -x urls.xml --timeout 8 
+
+>> ./EyeWitness.py -f urls.txt --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
+
+32) naabu
+>> ~/tools/naabu/v2/cmd/naabu
+>> naabu -host hackerone.com
+>> https://github.com/projectdiscovery/naabu
+
+33) shuffledns
+>> root dir or tools dir any where to access this tool
+>> shuffledns -h
+
+34) dnsvalidator
+>> python3 setup.py install
+>>
+
+35) dnsgen
+>> dnsgen domains.txt
+
+36) waybackurls
+
+ mkdir wayback
+ cd wayback
+
+ >> cat ../../domains.txt | waybackurls | tee tmp.txt
+ 
+ >> cat tmp.txt | egrep -v "\.woff|\.ttf|\.svg|\.eot|\.png|\.jpeg|\.jpg|\.css|\.ico"
+
+ >> cat tmp.txt | egrep -v "\.woff|\.ttf|\.svg|\.eot|\.png|\.jpeg|\.jpg|\.css|\.ico" | sed 's/:80//g;s/:443//g' | sort -u > $domain/Recon/wayback/valid.txt
+
+
+ >> cat tmp.txt | egrep -v "\.woff|\.ttf|\.svg|\.eot|\.png|\.jpeg|\.jpg|\.css|\.ico" | sed 's/:80//g;s/:443//g' | sort -u > wayback.txt
+
+-----------------------------------------------------
+https://medium.com/@soyelmago/bugbounty-tips-continuously-updated-dd8fe8914bdc
