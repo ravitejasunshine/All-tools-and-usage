@@ -1,0 +1,317 @@
+stok notes
+https://www.youtube.com/watch?v=140jGlN14vs
+-----------------------
+day-1
+>> upload scanner (burp extension)
+>> Image magic is on efire CVE-2016-3714
+>> ImageTragick
+>> inkscape
+>> XXE vulnerability during resterization of SVG images
+-------------------------
+day-2
+>> pentesterlab
+>> twitter.com/ofjaaah
+>> github.com/OfJAAH
+>> github.com/projectdiscovery/nuclei-templates
+>> amass
+>> Recon.dev
+>> medium.com/@hakluke
+>> chaos.projetcdiscovery.io
+>> blackhillsinfosec.com
+>> github.com/ffuf/ffuf
+>> insiderphd.dev
+>> insiderphd.dev/tools/ffuf.html
+>> github.com/codingo/bbr
+>> stokfredrik.com
+>> twitter.com/jhaddix(bug hunetrs methodology v4)
+>> blog.it-securityguard.com
+>> twitter.com/ITSecurityguard
+>> farah Hawa (youtube)
++++twitch channels
+>> Ash_FOx
+>> TheMayor11
+>> sup3rhero1
+>> ceos3c
++++++
+>> intigriti.com
+>> https://twitter.com/samwcyo
+>> https://spaceraccoon.dev
+>> https://github.com/codingo(crithit)
+>> https://virseccon.com
+>> jobert Abma (github,hackerone,twitter)
+>> https://gitlab.com/jobertabma
+>> Adam Langley(twitter)
+>> https://ctfchallenge.co.uk/
+----------------------------------------
+Bounty Thursdays - Wordlists for content discovery and API bugs!
+>> https://wordlists.assetnote.io/
+>> github.com/BonJarber/SecUtils (https://github.com/BonJarber/SecUtils/tree/master/clean_wordlist)
+usage: +++ wget https://github.com/BonJarber/SecUtils/raw/master/clean_wordlist/clean_wordlist.sh
++++ chmod +x clean_wordlist.sh
++++ ./clean_wordlist.sh
++++ ./clean_wordlist.sh jhaddix-all.txt
++++ diff jhaddix-all.txt_cleaned <(sort jhaddix-all.txt) | more
+>>> github.com/lobuhi/byp4xx/
+usage: ./byp4xx.sh https://penteterlab.com/my
+>> github.com/projectdiscovery/nuclei/
+version=2.2.0 latest
+----------------------------------------------------
+Bounty Thursdays - Automation, xss challenge, Getallurls, Burp Suite 2020.4, Logger++, hacker101.com
+>> twitter.com/securinti
+>> twitter.com/tomnomnom(javascript for hackers)
+>> github.com/lc/gau
+usage: 
++++ echo bugcrowd.com | gau
++++ echo bugcrowd.com | gau -subs
+>> hackerone.com/mayonaaise
+>> github.com/nccgroup/LoggerPlusPlus
+>> twitter/Corey Arthur
+@CoreyD97
+----------------------------------------------------
+BOUNTY THURSDAYS - Bugcrowd Levelup0x06 RECAP, amass update, Intigriti May XSS challenge, Nuclei
+>> levelup.sh
+>> youtube.com/bugcrowd
+>> twitter.com/Burp Bounty@BountyBurp
+>> Amass
+>> twitter.com/OWASP Amass@owaspamass
+>> twitter.com/Jing Ling@shmilylty
+>> projectdiscovery.io
+>> github.com/projetcdiscovery/nuclei
+>> github.com/Microsvuln/Awesome-AFL
+>> keybr.com
+---------------------------------------------------------------
+Bounty Thursdays - CHAOS, HTTPX, XSS challenge, H1-2006 CTF, DNSCEWL, NAHAMCON and much more.
+>> github.com/bugcrowd/HUNT
+>> github.com/codingo/DNSCewl
+>> xss.pwnfunction.com
+>> chaos.projectdiscovery.io
+usage in terminal
++++ chaos -d aol.com -silent
+>> github.com/projectdiscovery/httpx
+usage: cat bugcrowd.txt | httpx -title -status-code
+>> github.com/pry0cc/axiom
+>> nahamcon.com
+----------------------------------------------
+Bounty Thursdays - H1 paid $2.4m to hackers in ONE week , VirSecCon aftermath & Burp Bounty update
+>> ctfchallenge.co.uk
+>> Burp Bounty - Scan Check Builder
+>> github.com/wagiro/BurpBounty
+>> https://www.youtube.com/channel/UCSq4R2o9_nGIMHWZ4H98GkQ/playlists
+>> https://www.wagiro.com
+>> labs.f-secure.com
+>> CVE-2020-9530 AND CVE-2020-9531
+-------------------------------------------------
+10+ Free OSINT tools (secure yourself today!)
+>> shodan.io
+>> dnsdumpster.com
+>> crt.sh
+>> hackertarget.com
+>> ipinfo.io
+>> archive.org
+>> recon.dev
+>> tenable.com
+>> projectdiscovery.io
+>> github.com/projectdiscovery/nuclei
+usage: 
+ subfinder -d visma.com -silent | httpx -silent | nuclei -t cves/ -o results.txt
+ >> dehashed.com
+ >> https://www.stokfredrik.com/
+ ---------------------------------------------------------
+ BOUNTY THURSDAYS - India EK NUMBER!
+ >> itmoah.bugcrowd.com
+ >> samcurry.net/hacking-starbucks
+ >> twitter.com/samwcyo
+ >> twitter.com/Rhynorater
+ >> ceos3c.com
+ >> twitter.com/ceos3c
+ >> twitter.com/d0nutptr
+ >> youtube.com/c/hacksplained
+ ----------------------------------------------------------
+ BOUNTY THURSDAYS - Loads of new bugbounty content creators that create awesome content for you!
+ >> youtube.com/assetnote
+ >> Alex chapman
+ >> insiderphd(youtube)
+ >> youtube.com/hakluke
+ >> youtube.com/Bug bounty Reports Explained
+ >> youtube.com/Web Development Tutorials
+ >> pentesting/Bug bounty mindmap(rohit goutham)
+ >> twitter.com/patrik Fehrenbach@ITsecurityguard
+ >> hackerone.com/Jon Bottarini(jon_bottarini)
+ >> twitter/Harsh jaiswal@rootxharsh
+ Javascript prototype pollution - part-1
+ >> twitter.com/Michael Skelton@codingo_
+ -----------------------------------------------
+ BOUNTY THURSDAYS - Reconless, Axiom, DNSObserver, GF-Patterns, Pimp my terminal
+ >> youtube.com/Reconless
+ >> twitter.com/pry0cc 
+ >> github.com/pry0cc/axiom
+ >> twitter.com/ally_o_malley
+ >> github.com/allyomalley/dnsobserver
+ >> drasite.com
+ >> @_tnkr_
+ >> github.com/bugcrowd/HUNT
+ >> twitter.com/1ndianl33t
+ >> github.com/1ndianl33t/Gf-Patterns
+ usage:
+ +++ cat subdomains.txt | waybackurls | sort -u >> waybackdata | gf ssrf | tee -a ssrfparams.txt
++++ cat waybackdata | gf redirect | tee -a redirect.txt
++++ gf + hunt + gfpatterns=win
+------------------------------------------------------
+BOUNTY THURSDAYS - SSRF, OneForAll, tryhackme, Postmessage-tracker, LEVELUP0x06
+>> github.com/fransr/postMessage-tracker
+>> medium.com/@dOnut
+>> github.com/shmilylty
+>> github.com/shmilylty/OneForAll
+usage:
+++ python3.8 oneforall.py --target bugcrowd.com --port small --brute True --format csv run
+Tomnomnom
+++ cat file.csv | sort -t, -k5,5 <- e.g sort output of csv by fifth column
+>> levelup.sh(0x06)
+++ codingo
+++ hakluke
+++ vortex
+++ sml555
+++ casey
+++ stok
+>> bugcrowd levelup
+----------------------------------------------------
+Bounty Thursdays - URLPROBE, GITSCRAPER, NAHAMCON, SSHGIT and much more!
+>> Content discovery tools
+++ wfuzz
+++ dirsearch
+++ ffuf
+++ turbo intruder
+++ burp content discover
+>> github.com/adamtlangley/gitscraper
+>> github.com/danielmiessler/SecLists
+>> github.com/1ndianl33t/urlprobe
+usage:
+++ assetfinder --subs-only test.com | aybackurls | gf redirect | urlprobe -c 1000 -t 05
+++ Subfinder -d test.com | gau | gf ssrf | urlprobe -c 1000 -t 05
+++ assetfinder --subs-only intigriti.com | gau | urlprobe -c 1000 -10
+>> tryhackme.com
+>> shhgit.darkport.co.uk
+>> blog.intigriti.com
+-----------------------------------------------------
+Bounty Thursdays - DNS_ XSS_ DOMXSS_ SSRF_
+>> github.com/projectdiscovery/dnsx
+usage:
+++ subfinder -d example.com -silent | wc -l
+++ subfinder -d example.com -silent | dnsx -silent | wc -l
+++ subfinder -d example.com -silent | dnsx -silent -resp-only | sort -u
+>> github.com/B1twis3
+>> github.com/Leoid/Burp2Slack
+>> gitlab.com/dee-see/hackerone-scripts
+>> github.com/tomnomnom/hacks
+>> gitlab.com/elkokc/reflector
+>> gitlab.com/filedescriptor
+>> gitlab.com/obheda12/JupyterPen
+>> gitlab.com/th3hack3riz/Lazy-FuzzZ
+>> CORS == tools.honoki.net/cors.html
+-----------------------------------------------------
+Bounty Thursdays - VirSecCon, H1-2004, VDP Finder, Bug Bytes, Bugcrowd Community.
+>> twitter.com/Pieter Hiele@honoki
+>> Hacking Icons
+++ Tomnomnom
+++ JHaddix
+++ zseano
+++ uraniumhacker
+++ Stokfredrik
+++ ChloeMessdaghi
+++ niden
+++ b3nac
+++ erbbysam
+++ EthicalHacker
+--------------------------------------------------------------------
+BOUNTY THURSDAYS (CVE-2020-13379, Hackers Summercamp, Hackthebox, Bughunters Methodology 4, Nucleai)
+>> redteamvillage.io
+>> twitch.tv/hackeronetv
+>> rhynorator.github.io/CVE-2020-13379-Write-Up
+>> CVE-2020-13379
+>> jhaddix(The bug hunters methodology v4)
+>> buer.haus
+>> tfchallenge.co.uk
+>> delta.navisec.io
+>> hackthebox.eu
+>> blog.projectdiscovery.io
+>> blog.intigriti.com
+------------------------------------------------
+BUG BOUNTY Changed my life - A motivational talk from BSIDES Ahmedabad
+>> How to shot web(Defcon)
+>> Remote code execution
+------------------------------------------------
+BUG BOUNTY LIFE - 40 Hackers in Amsterdam, what could go wrong (HackerOne - Dropbox - H1-3120)
+>> just ctf events
+-------------------------------------------------
+BUG BOUNTY LIFE - Getting drunk with my friends in Stockholm (SEC-T)
+-------------------------------------------------
+BUG BOUNTY LIFE - Hackers in infinity pools is that a thing (HackerOne - H1-65 - Singapore)
+-----------------------------------------------------
+BUG BOUNTY LIFE - Hackers on a boat.. (HackerOne h1-4420 - UBER - London)
+-----------------------------------------------------
+BUG BOUNTY LIFE - I'V NEVER BEEN THIS SICK! (Hackerone h1-415 2019 San Fransciso)
+------------------------------------------------------
+Burp Suite tutorial- IDOR vulnerability automation using Autorize and AutoRepeater (bug bounty)
+>> Fisher@Regala
+>> IDOR(burp plugin autherize)
+------------------------------------------------------
+Cheap VPS for Bug Bounties & Pentesting & Thanks Video
+>> https://www.ewebguru.com/vps.php
+>> https://github.com/LukaSikic/subzy
+>> subdomain takeover tool
+>> https://github.com/arkadiyt/bounty-targets-data
+-----------------------------------------------------
+Finally! HOW TO solve the INTIGRITI Easter XSS challenge using only Chrome DEVTOOLS!
+-----------------------------------------------------
+FUZZING FOR BEGINNERS (KUGG teaches STÖK American fuzzy lop)
+>> Christoffer Jerkeby@Kuggofficial(twitter)
+>> AFL
+>> github.com/google/AFL
+>> sudo apt-get install afl
+>> CC=afl-gcc
+>> afl-fuzz .
+------------------------------------------------------
+HOURS & HOURS OF FREE CYBER SECURITY TRAINING (im loosing it)
+>> defcon.org/html/defcon-28
+>> Redteam village
+>> appsec village
+>> appsecvillage.com
+>> redteamvillage.io
+>> levelup.bugcrowd.com(0x07)
+>> Arkadiy Telelman@arkadiyt(twitter)
+>> github.com/arkadiyt/bounty-targets-data
+>> Hunting for javascript
+>> github.com/secarmy/rengine
+------------------------------------------------------------------
+How i became a HackerOne MVH without writing a single line of python (Motivational talk)
+>> https://leanpub.com/u/peteryaworski
+>> The web application hackers handbook 2
+>> File upload
+>> bussiness logic
+>> owasp juice shop
+>> portswigger academy
+>> tryhackme
+>> hackthebox
+>> pentesterlab
+>> CVES
+------------------------------------------------------------------
+HOW TO APPROACH A NEW BOUNTY TARGET 5 THINGS YOU MUST TEST FOR!
+>> Access control bugs
+>> IDORs
+>> RCE
+>> command injection
+>> Imagetragick
+>> Imagemagic is on Fire- CVE-2016-3714
+>> Cure53 github
+>> github cure53
+>> jhaddix all.txt
+-------------------------------------------------------------------
+How to get invited to HackerOne BUG BOUNTY live hack events!
+>> consistency of 90 days of leaderboard
+----------------------------------------------------------------
+HOW TO GET STARTED IN BUG BOUNTY (9x PRO TIPS)
+----------------------------------------------------------------
+HOW TO PLAY HTB WITHOUT A VPN OR KALI LINUX (PWN BOX)
+>> hackthebox.eu
+>> hakrawler github
+----------------------------------------------------------------
